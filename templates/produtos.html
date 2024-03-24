@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Lista de Produtos</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descrição</th>
+                    <th>Embalagem</th>
+                    <th>Fornecedor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for id, produto in produtos.items() %}
+                <tr id="produto-{{ id }}">
+                    <td>{{ id }}</td>
+                    <td>{{ produto.descricao }}</td>
+                    <td>{{ produto.embalagem }}</td>
+                    <td>{{ produto.fornecedor }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">Editar</a>
+                        <button onclick="excluirProduto({{ id }})" class="btn btn-danger">Excluir</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-secondary">Voltar para a Página Inicial</a>
+        <a href="/produto" class="btn btn-success">Adicionar Produto</a>
+    </div>
+</body>
+<script>
+    function excluirProduto(id) {
+        if (confirm("Tem certeza de que deseja excluir este produto?")) {
+            var row = document.getElementById("produto-" + id);
+            row.parentNode.removeChild(row);
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Cadastrar Novo Produto</h1>
+        <form id="formCadastro" method="POST" action="/produto">
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" required>
+            </div>
+            <div class="form-group">
+                <label for="embalagem">Embalagem:</label>
+                <input type="text" class="form-control" id="embalagem" name="embalagem" required>
+            </div>
+            <div class="form-group">
+                <label for="fornecedor">Fornecedor:</label>
+                <input type="text" class="form-control" id="fornecedor" name="fornecedor" required>
+            </div>
+            <button type="button" id="btnCadastrar" class="btn btn-primary">Cadastrar</button>
+            <a href="/produtos" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('btnCadastrar').addEventListener('click', function () {
+
+                var descricao = document.getElementById('descricao').value.trim();
+                var embalagem = document.getElementById('embalagem').value.trim();
+                var fornecedor = document.getElementById('fornecedor').value.trim();
+
+                if (descricao === '' || embalagem === '' || fornecedor === '') {
+                    alert('Por favor, preencha todos os campos do formulário.');
+                    return;
+                }
+                document.getElementById('formCadastro').submit();
+            });
+        });
+    </script>
+</body>
+
+</html>
