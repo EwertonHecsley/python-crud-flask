@@ -1,3 +1,5 @@
+# Simulando funcionalidades de um banco de dados.
+
 produtos = {
     1:{
         "descricao":"Cerveja Heineken 350ml",
